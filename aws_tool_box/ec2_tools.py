@@ -50,6 +50,7 @@ def find_running_ec2_by_name(ec2_name):
 
     return test_instance_found
 
-# TODO create a functional test that creates, then terminate an instance.
 
-
+def get_instance_public_ip(instance_name):
+    instance_data = find_running_ec2_by_name(instance_name)
+    pprint(instance_data['PublicIpAddress'])
