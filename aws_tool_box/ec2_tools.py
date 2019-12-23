@@ -52,5 +52,9 @@ def find_running_ec2_by_name(ec2_name):
 
 
 def get_instance_public_ip(instance_name):
+    instance_ip = False
     instance_data = find_running_ec2_by_name(instance_name)
-    pprint(instance_data['PublicIpAddress'])
+    if instance_data:
+        instance_ip = instance_data['PublicIpAddress']
+
+    return instance_ip
