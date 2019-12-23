@@ -18,5 +18,3 @@ def test_find_ec2_by_name():
 
     not_ec2 = "this is not an ec2 name"
     assert not ec2_tools.find_running_ec2_by_name(not_ec2)
-
-    # TODO find an excisting name then search for it using func
