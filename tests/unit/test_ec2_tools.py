@@ -1,5 +1,7 @@
-from aws_tool_box import ec2_tools
-
+try:
+    from aws_tool_box import ec2_tools
+except ImportError:
+    from aws_api_client.aws_tool_box import ec2_tools
 
 def test_get_all_instances():
     instances = ec2_tools.get_all_running_ec2()

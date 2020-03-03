@@ -1,5 +1,7 @@
-from aws_tool_box import ec2_tools
-
+try:
+    from aws_tool_box import ec2_tools
+except ImportError:
+    from aws_api_client.aws_tool_box import ec2_tools
 
 def test_creating_and_deleting_ec2():
     test_instance_name = "delete_me_test"
