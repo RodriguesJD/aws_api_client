@@ -5,8 +5,9 @@ import boto3
 
 key_name = os.environ["AWS_PEM_KEY"]
 image_id = os.environ["AWS_IMAGE_ID"]
+profile_name = os.environ["AWS_DEV_PROFILE"]
 
-ec2 = boto3.resource('ec2')
+ec2 = boto3.session.Session(profile_name=profile_name, region_name="us-west-2").resource('ec2')
 
 
 def create_ubuntu_18_04(name):
@@ -31,7 +32,7 @@ def delete_instances(instance_ids):
 
 def get_all_running_ec2():
     instances = []
-    ec2client = boto3.client('ec2')
+    ec2client = boto3.session.Session(profile_name=profile_name, region_name="us-west-2").client('ec2')
     response = ec2client.describe_instances()
     for reservation in response["Reservations"]:
         for instance in reservation["Instances"]:
@@ -58,3 +59,5 @@ def get_instance_public_ip(instance_name):
         instance_ip = instance_data['PublicIpAddress']
 
     return instance_ip
+
+
