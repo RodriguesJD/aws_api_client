@@ -1,11 +1,11 @@
 import os
 from pprint import pprint
-
 import boto3
 
 image_id = os.environ["AWS_IMAGE_ID"]
 profile_name = os.environ["AWS_PERSONAL"]
 key_name = os.environ["PEM_FILENAME"]
+
 ec2 = boto3.session.Session(profile_name=profile_name, region_name="us-west-2").resource('ec2')
 
 
